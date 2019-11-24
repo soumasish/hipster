@@ -3,10 +3,10 @@ Hipster
 
 
 ## Description
-Hipster provides a thread-safe implementation of the MinHeap and MaxHeap. Each collection type provide a simple API to ```push```, ```pop```, ```peek``` and ```clear```.
-The data structure is built on top of the ```heapq``` algorithm provided by Python.
+Hipster provides a thread-safe implementation of the MinHeap and MaxHeap. Each collection type exposes a simple API to ```push```, ```pop```, ```peek``` and ```clear```.
+The data structure is built on top of the ```heapq``` algorithm.
 #### Object Usage
-For adding an object to the heap, the object needs to encapsulate it's comparison logic.
+For adding an object to the heap, the object needs to implement it's comparator logic.
 ```
 class GitRepo:
     def __init__(self, url, stars, forks):
@@ -61,9 +61,10 @@ max_heap.clear()               # Removes all items from the heap
 MIT
 
 ## Changelog
+##### 2.0.2
+fixed README
 ##### 2.0.1
 Updated object usage example, updated README
 ##### 2.0.0
-Added thread safety
-##### 1.0.6
-Added clear, fixed README
+Added thread safety, added more tests
+

@@ -7,7 +7,7 @@ README = (HERE / "README.md").read_text()
 
 setup(
     name="hipster",
-    version="2.0.1",
+    version="2.0.2",
     description="A thread safe implementation of the Min Heap and Max Heap",
     long_description=README,
     long_description_content_type="text/markdown",

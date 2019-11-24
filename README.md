@@ -3,31 +3,36 @@ Hipster
 
 
 ## Description
-Hipster provides a thread-safe implementation of the MinHeap and MaxHeap. For adding an object to the heap, the object needs to encapsulate it's comparison logic.
+Hipster provides a thread-safe implementation of the MinHeap and MaxHeap. Each collection type provide a simple API to ```push```, ```pop```, ```peek``` and ```clear```.
+The data structure is built on top of the ```heapq``` algorithm provided by Python.
 #### Object Usage
+For adding an object to the heap, the object needs to encapsulate it's comparison logic.
 ```
-class CustomObject:
-    def __init__(self, a, b):
-        pass
+class GitRepo:
+    def __init__(self, url, stars, forks):
+        self.url = url
+        self.stars = stars
+        self.forks = forks
     
     # The object needs to implement the following methods
     def __eq__(self, other):
-        pass
+        return self.name == other.name and self.stars == other.stars and self.forks == other.forks
 
     def __ne__(self, other):
-        pass
+        return self.name != other.name or self.stars != other.stars or self.forks != other.forks
     
     def __lt__(self, other):
-            pass
+        # The two repos are first compared based on stars then forks and then sorted lexically based on url
+        if self.stars == other.stars and self.forks == other.forks return self.url < other.url
 
     def __le__(self, other):
-        pass
+        if self.stars == other.stars and self.forks == other.forks return self.url <= other.url
 
     def __gt__(self, other):
-        pass
+        if self.stars == other.stars and self.forks == other.forks return self.url > other.url
 
     def __ge__(self, other):
-        pass
+        if self.stars == other.stars and self.forks == other.forks return self.url >= other.url
 
 
 ```
@@ -56,5 +61,9 @@ max_heap.clear()               # Removes all items from the heap
 MIT
 
 ## Changelog
+##### 2.0.1
+Updated object usage example, updated README
+##### 2.0.0
+Added thread safety
 ##### 1.0.6
 Added clear, fixed README

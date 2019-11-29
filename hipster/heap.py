@@ -1,6 +1,7 @@
 import abc
 import heapq
 from readerwriterlock import rwlock
+
 from hipster.error import HeapError
 
 
@@ -26,17 +27,18 @@ class Heap(abc.ABC):
     def remove(self, item):
         store = []
         found = False
-        while len(self.heap) > 0:
-            curr = self.heap.pop()
-            if curr == item:
-                found = True
-                break
-            else:
-                store.append(curr)
-        if not found:
-            raise HeapError("Item not in Heap")
-        while len(store) > 0:
-            heapq.heappush(self.heap, store.pop())
+        with self.write_lock:
+            while len(self.heap) > 0:
+                curr = self.heap.pop()
+                if curr == item:
+                    found = True
+                    break
+                else:
+                    store.append(curr)
+            if not found:
+                raise HeapError("Item not in Heap")
+            while len(store) > 0:
+                heapq.heappush(self.heap, store.pop())
 
     def clear(self):
         with self.write_lock:
@@ -45,4 +47,3 @@ class Heap(abc.ABC):
     def __len__(self):
         with self.read_lock:
             return len(self.heap)
-

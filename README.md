@@ -71,6 +71,8 @@ min_heap.clear()               # Removes all items from the heap
 MIT
 
 ## Changelog
+##### 3.0.1
+Fixed a bug with thread safety on remove
 ##### 3.0.0
 Added remove, refactored duplicated code to base class, added more tests, updated README
 ##### 2.0.2

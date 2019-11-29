@@ -18,5 +18,3 @@ class MaxHeap(Heap):
             raise HeapError("Popping off an empty heap")
         with self.write_lock:
             return self.heap.pop()
-
-

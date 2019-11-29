@@ -1,6 +1,6 @@
 import unittest
 
-from hipster.heap import MaxHeap
+from hipster.max_heap import MaxHeap
 
 
 class TestMaxHeap(unittest.TestCase):
@@ -23,6 +23,15 @@ class TestMaxHeap(unittest.TestCase):
         max_heap.push(9)
         max_heap.push(17)
         self.assertEqual(max_heap.pop(), 17)
+
+    def test_remove(self):
+        max_heap = MaxHeap()
+        max_heap.push(13)
+        max_heap.push(9)
+        max_heap.push(17)
+        max_heap.remove(13)
+        max_heap.pop()
+        self.assertEqual(max_heap.pop(), 9)
 
     def test_clear(self):
         max_heap = MaxHeap()

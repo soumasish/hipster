@@ -1,6 +1,6 @@
 import unittest
 
-from hipster.heap import MinHeap
+from hipster.min_heap import MinHeap
 
 
 class TestHeap(unittest.TestCase):
@@ -24,6 +24,22 @@ class TestHeap(unittest.TestCase):
         self.assertEqual(min_heap.pop(), 11)
         self.assertEqual(min_heap.pop(), 12)
         self.assertEqual(min_heap.pop(), 15)
+
+    def test_remove(self):
+        min_heap = MinHeap()
+        min_heap.push(13)
+        min_heap.push(9)
+        min_heap.push(17)
+        min_heap.remove(13)
+        min_heap.pop()
+        self.assertEqual(min_heap.pop(), 17)
+
+    def test_clear(self):
+        min_heap = MinHeap()
+        min_heap.push(13)
+        min_heap.push(9)
+        min_heap.clear()
+        self.assertEqual(len(min_heap), 0)
 
 
 if __name__ == '__main__':
